@@ -1,0 +1,14 @@
+type Article {
+    title: String
+    url: String
+    date: String
+  }
+  
+  type QueryResponse  {
+    answer: String
+    sources: [Article]
+  }
+  
+  type Query {
+    agent(query: String): QueryResponse
+  }

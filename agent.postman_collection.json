@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "42d4fa9d-19f2-40cc-bbe8-2ba1d70ced47",
+		"name": "News RAG System API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26509331"
+	},
+	"item": [
+		{
+			"name": "POST /graphql",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query {\n  agent(query: \"Tell me the latest news about Justin Trudeau\") {\n    answer\n    sources {\n      title\n      url\n      date\n    }\n  }\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/graphql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

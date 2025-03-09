@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.2.1
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:7.2.1
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+
+  api:
+    build: .
+    container_name: news-agent-llm
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - KAFKA_BROKER=kafka:9092
+      - KAFKA_USERNAME=OXQDOMDXAEIPZDEG
+      - KAFKA_PASSWORD=Rq9Jv5kKr4kfMTG0xkJZazgwOIKqduM+vbXjyxBK9EpE7FDLbcMRcbbx17TYEhZm
+      - KAFKA_TOPIC_NAME=news
+      - KAFKA_GROUP_ID_PREFIX=test-task-
+      - PINECONE_API_KEY=pcsk_3Lotd2_RCtGpwB1oUS5uAFTQzNPSTvsg1atzzYVcoQSXbD4XoyZ57d1FLSkkRG3PCDhjKC
+      - PINECONE_INDEX_NAME=news-articles
+      - GEMINI_API_KEY=AIzaSyD5HwUlnOdULpDzsD69vq_rDMP1rk5nAaU
+    depends_on:
+      - kafka
