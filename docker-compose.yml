@@ -29,14 +29,14 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NODE_ENV=development
-      - KAFKA_BROKER=kafka:9092
-      - KAFKA_USERNAME=OXQDOMDXAEIPZDEG
-      - KAFKA_PASSWORD=Rq9Jv5kKr4kfMTG0xkJZazgwOIKqduM+vbXjyxBK9EpE7FDLbcMRcbbx17TYEhZm
-      - KAFKA_TOPIC_NAME=news
+      - NODE_ENV=
+      - KAFKA_BROKER=
+      - KAFKA_USERNAME=
+      - KAFKA_PASSWORD=
+      - KAFKA_TOPIC_NAME=
       - KAFKA_GROUP_ID_PREFIX=test-task-
-      - PINECONE_API_KEY=pcsk_3Lotd2_RCtGpwB1oUS5uAFTQzNPSTvsg1atzzYVcoQSXbD4XoyZ57d1FLSkkRG3PCDhjKC
+      - PINECONE_API_KEY=
       - PINECONE_INDEX_NAME=news-articles
-      - GEMINI_API_KEY=AIzaSyD5HwUlnOdULpDzsD69vq_rDMP1rk5nAaU
+      - GEMINI_API_KEY=
     depends_on:
       - kafka
