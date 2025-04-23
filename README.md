@@ -50,7 +50,7 @@ The **News Article Agent** is a Node.js application that integrates a large lang
 
 ```bash
 git clone https://github.com/Lucas-Gomes-hb/LLM
-cd news-article-agent
+cd LLM
 ```
 
 ---
@@ -60,13 +60,15 @@ cd news-article-agent
 Create a `.env` file in the project root with the following variables:
 
 ```env
-PINECONE_API_KEY=your-pinecone-key
-GEMINI_API_KEY=your-gemini-key
-KAFKA_BROKER=kafka:9092
-KAFKA_USERNAME=your-username
-KAFKA_PASSWORD=your-password
-KAFKA_TOPIC_NAME=news
-KAFKA_GROUP_ID_PREFIX=test-task-
+PINECONE_API_KEY=""
+PINECONE_INDEX_NAME="news-articles"
+GEMINI_API_KEY=""
+KAFKA_BROKER=""
+KAFKA_USERNAME=""
+KAFKA_PASSWORD=""
+KAFKA_TOPIC_NAME="news"
+KAFKA_GROUP_ID_PREFIX="test-task-"
+
 ```
 
 ---
@@ -178,16 +180,6 @@ query {
 
 4. **Kafka Usage**:
    - Processes messages in real-time with fault handling and reprocessing.
-
----
-
-## How to Contribute
-
-1. Fork the repository.
-2. Create a branch for your feature (`git checkout -b feature/new-feature`).
-3. Commit your changes (`git commit -m 'Adds new feature'`).
-4. Push to the branch (`git push origin feature/new-feature`).
-5. Open a Pull Request.
 
 ---
 

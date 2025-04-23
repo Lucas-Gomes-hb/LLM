@@ -1,4 +1,4 @@
-type Article {
+  type Article {
     title: String
     url: String
     date: String
